@@ -22,6 +22,15 @@ layers: [osm, geoServerLayer],
  view: new ol.View({    //Modify the pairs of this object to set center, zoom, rotation or resolution of the map
  	center: [0,0],      //You can use ol.proj.fromLonLat([x,y]) to transform the map coordinate system
  	zoom: 0
- })
+ }),
+ controls: ol.control.defaults().extend([  //adding map controls
+ 	new ol.control.ScaleLine(),        
+ 	new ol.control.FullScreen(),
+ 	new ol.control.OverviewMap(),
+ 	new ol.control.MousePosition({
+ 		coordinateFormat: ol.coordinate.createStringXY(4),
+ 		projection: 'EPSG: 3857'  //3857 ref system of OSM
+ 	 })
+ 	])  //Styles can be changed in a custom css to avoid overlay of controls 
 });
 
